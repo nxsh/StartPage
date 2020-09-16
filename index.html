@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://kit.fontawesome.com/d2a5037855.js" crossorigin="anonymous"></script> 
+  <title>Document</title>
+</head>
+<body>
+  
+  <header>
+    <p class="textCenter">Hi Ryan,<br> The time is <span id="timest">00:00</span> on the <span id="datest">SOMETHING of SOMETHING</span></p>
+  </header>
+    <div id='main'>
+      <nav class="hide">
+        <p class="sectionTitle">Navigation</p>
+      </nav>
+      <article>
+        <div id="nfull">
+        <p class="textCenter"><i id="searchEngine" class="fab fa-2x fa-google"></i></p>
+          <div class="search">
+            <input type="text" id="search-field" class="searchTerm" placeholder="What are you looking for?" onkeypress="return search(event)">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+           </button>
+         </div>
+        <div class="grid textCenter">
+          <div class="coll">
+            <p class="category">Productivity</p>
+            <div class="links">
+              <a href="https://www.notion.so/"><p>Notion</p></a>
+              <a href="#"><p>Link Two</p></a>
+            </div>
+          </div>
+          <div id="browsing" class="coll">
+            <p class="category">Browsing</p>
+            <div class="links">
+              <a href="https://feedly.com/i/my"><p>Feedly</p></a>
+              <a href="https://news.ycombinator.com/"><p>Hacker News</p></a>
+            </div>
+          </div>
+          <div class="coll">
+            <p class="category">Programming</p>
+            <div class="links">
+              <a href="https://overthewire.org"><p>OverTheWire</p></a>
+              <a href="https://github.com/nxsh"><p>My GitHub</p></a>
+            </div>
+          </div>
+          <div class="coll">
+            <p class="category">University</p>
+            <div class="links">
+              <a href="https://warwick.ac.uk/students/"><p>MyWarwick</p></a>
+              <a href="https://tabula.warwick.ac.uk/"><p>Tabula</p></a>
+              <a href="https://go.warwick.ac.uk/mymail"><p>365 Mail</p></a>
+              <a href="https://moodle.warwick.ac.uk/my/"><p>Moodle</p></a>
+            </div>
+          </div>
+        </div>
+      </div> 
+      </article>
+      <aside class="hide"><p class="sectionTitle">aside</p></aside>
+    </div>
+  <footer><p>Ryan Nash &copy 2020</p></footer>
+<script src="script.js"></script>
+</body>
+</html>
