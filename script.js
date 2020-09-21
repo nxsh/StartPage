@@ -1,6 +1,7 @@
 // Load functions on window load
 function start() {
-  dateTime();
+	dateTime();
+	weather();
 }
 window.onload = start;
 
@@ -115,7 +116,61 @@ function search(e) {
 		var val = document.getElementById("search-field").value;
 		var engine = "https://google.com/search?q=";
 		location.href = (engine + val);
-  }
+	}
 }
 
+// Weather
+function weather() {
+  var location = document.getElementById("location");
+  var apiKey = "c632ff1ea87a9720027890a394abe1e4";
+  var url = "https://api.forecast.io/forecast/";
+
+  latitude = "52.626881";
+  longitude = "-1.115510";
+  //location.innerHTML = "Latitude is " + latitude + ", Longitude is " + longitude;
+
+    $.getJSON(
+      url + apiKey + "/" + latitude + "," + longitude + "?callback=?",
+      function(data) {
+        temp = data.currently.temperature;
+
+        function fahrenheitCelsius(temp) {  
+          var fsc = temp;
+          var cfc = ((fsc-32) * (5/9)).toFixed(2);
+          return cfc;
+        }
+
+        temp = fahrenheitCelsius(temp);
+        $("#temp").html(temp +  "&deg;C");
+        $("#minutely").html(data.minutely.summary);
+       
+              //Skycons
+			var iconRequest = data.currently.icon;
+			
+			var icons = new Skycons({'color' : '#268bd2'});
+			
+			var iconList = [
+				"clear-day",
+				"clear-night",
+				"partly-cloudy-day",
+				"partly-cloudy-night",
+				"cloudy",
+				"rain",
+				"sleet",
+				"snow",
+				"wind",
+				"fog"
+			];		
+			//console.log(icons);
+			for (i = 0; i < iconList.length; i++) {
+				if (iconRequest == iconList[i]) {
+						icons.set('icon', iconList[i]);
+					
+				}
+			}
+			icons.play();
+        }
+     
+ );
+}
 

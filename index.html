@@ -6,7 +6,8 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://kit.fontawesome.com/d2a5037855.js" crossorigin="anonymous"></script> 
-  <title>Document</title>
+  <script src="https://darkskyapp.github.io/skycons/skycons.js"></script>
+  <title>Start</title>
 </head>
 <body>
   
@@ -31,7 +32,8 @@
             <p class="category">Productivity</p>
             <div class="links">
               <a href="https://www.notion.so/"><p>Notion</p></a>
-              <a href="#"><p>Link Two</p></a>
+              <a href="https://github.com/nxsh"><p>My GitHub</p></a>
+              <a href="https://www.linkedin.com/feed/"><p>LinkedIn</p></a>
             </div>
           </div>
           <div id="browsing" class="coll">
@@ -39,13 +41,16 @@
             <div class="links">
               <a href="https://feedly.com/i/my"><p>Feedly</p></a>
               <a href="https://news.ycombinator.com/"><p>Hacker News</p></a>
+              <a href="https://www.reddit.com/"><p>Reddit</p></a>
             </div>
           </div>
           <div class="coll">
             <p class="category">Programming</p>
             <div class="links">
+              <a href="https://leetcode.com/problemset/all/"><p>LeetCode</p></a>
               <a href="https://overthewire.org"><p>OverTheWire</p></a>
-              <a href="https://github.com/nxsh"><p>My GitHub</p></a>
+              <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html"><p>SICP Book</p></a>
+              <a href="https://www.coursera.org/learn/build-a-computer/home/welcome"><p>Nand2Tetris</p></a>
             </div>
           </div>
           <div class="coll">
@@ -60,7 +65,14 @@
         </div>
       </div> 
       </article>
-      <aside class="hide"><p class="sectionTitle">aside</p></aside>
+      <aside class="hide">
+        <p class="sectionTitle">Aside</p>
+        <div class="textCenter" id="weatherDiv">
+              <canvas id="icon" width="64" height="64"></canvas>
+                <div id="temp"></div>
+                <div id="minutely"></div>
+            </div>
+      </aside>
     </div>
   <footer><p>Ryan Nash &copy 2020</p></footer>
 <script src="script.js"></script>

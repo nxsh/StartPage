@@ -89,6 +89,7 @@ header, footer {
   color: #eee8d5;
   text-align: center;
 }
+
 footer p {
   margin: 2%;
 }
@@ -96,7 +97,24 @@ footer p {
 header p {
   margin: 2%;
 }
- 
+
+/* Misc styles */
+/* div to keep links from taking up whole width */
+#nfull {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.textCenter {
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
 /* Too narrow to support three columns */
 
 @media all and (max-width: 640px) {
@@ -115,7 +133,7 @@ header p {
   
   #main > nav, #main > aside, footer {
     min-height: 50px;
-    max-height: 50px;
+    max-height: fit-content; /* fits weather div */
   }
 
   header {
@@ -127,18 +145,8 @@ header p {
   }
 
 }
-/* div to keep links from taking up whole width */
-#nfull {
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-
-.textCenter {
-  text-align: center;
-}
-
+/* Grid/columns */
 .grid {
   display: flex;
   justify-content: space-between;
@@ -155,6 +163,7 @@ header p {
   text-align: center;
 }
 
+/* Search styling */
 .search input[type="text"] {
   background-color : #eee8d5; 
 }
@@ -192,8 +201,4 @@ header p {
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
-}
-
-.hide {
-  display: none;
 }
