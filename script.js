@@ -5,6 +5,8 @@ function start() {
 }
 window.onload = start;
 
+
+
 $(document).keydown(function(e){
 		if (e.keyCode==78) $("nav").toggleClass("hide")
 	});
@@ -109,29 +111,31 @@ var commands = [
 	},
 ];
 
+// Load first search icon
+window.onload($("#searchEngine").toggleClass(commands[count]["icon"]));
+
 $("#searchEngine").on("click", function() {
   // 'this' refers to the h1 being clicked, not ALL h1s
 	//$(this).css("color", "purple");
+	
+	$("#searchEngine").removeClass(commands[count]["icon"])
 	count++;
 	if(count == 8) { // reset counter (loop)
 		count = 0;
 	}
+	$("#searchEngine").addClass(commands[count]["icon"])
   console.log("Search button clicked!");
 });
 
 function search(e) {
-	
   if(e.keyCode == 13) { // if enter pressed
 		var val = document.getElementById("search-field").value;
-		var engine = "https://google.com/search?q=";
-		//location.href = (engine + val);
 		location.href = (commands[count]["url"]+val);
 	}
 }
 
 // Weather
 function weather() {
-  var location = document.getElementById("location");
   var apiKey = "c632ff1ea87a9720027890a394abe1e4";
   var url = "https://api.forecast.io/forecast/";
 
