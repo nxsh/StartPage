@@ -5,6 +5,12 @@ function start() {
 }
 window.onload = start;
 
+$(document).keydown(function(e){
+		if (e.keyCode==78) $("nav").toggleClass("hide")
+	});
+$(document).keydown(function(e){
+	if (e.keyCode==65) $("aside").toggleClass("hide")
+});
 // Month array
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "Oct", "November", "December"];
@@ -48,6 +54,8 @@ function dateTime() {
     document.getElementById('datest').textContent=t + " of " + n;
     t=setTimeout(dateTime, 500);
 }
+// Counter for search
+var count = 0;
 
 // Search engine array
 var commands = [
@@ -61,7 +69,7 @@ var commands = [
 		command: "/a",
 		label: "Amazon",
 		icon: "fa fa-amazon",
-		url: "https://www.amazon.com/s/field-keywords="
+		url: "https://www.amazon.co.uk/s?k="
 	},
 	{
 		command: "/d",
@@ -103,19 +111,21 @@ var commands = [
 
 $("#searchEngine").on("click", function() {
   // 'this' refers to the h1 being clicked, not ALL h1s
-  //$(this).css("color", "purple");
+	//$(this).css("color", "purple");
+	count++;
+	if(count == 8) { // reset counter (loop)
+		count = 0;
+	}
   console.log("Search button clicked!");
-	$("aside").toggleClass("hide");
-  $("nav").toggleClass("hide");
-  //$("#browsing").toggleClass("hide");
 });
 
 function search(e) {
-	// if input equals /t etc
-  if(e.keyCode == 13) {
+	
+  if(e.keyCode == 13) { // if enter pressed
 		var val = document.getElementById("search-field").value;
 		var engine = "https://google.com/search?q=";
-		location.href = (engine + val);
+		//location.href = (engine + val);
+		location.href = (commands[count]["url"]+val);
 	}
 }
 
