@@ -20,12 +20,29 @@ a {
   font-size: 20px;
 }
 
+/* Link category styling */
 .category {
   margin-left: 10px;
   margin-right: 10px;
   color: #eee8d5;
+}
+
+#productivity {
   background-color: #dc322f;
 }
+
+#browsing {
+  background-color: #2aa198;
+}
+
+#programming {
+  background-color: #6c71c4;
+}
+
+#university {
+  background-color: #d33682;
+}
+
 
 #main {
   min-height: 500px;
@@ -83,11 +100,19 @@ header, footer {
  text-align: center;
 }
 
+/* Styling nav and aside */
 .sectionTitle {
-  background-color: #d33682;
   margin-top: 0;
   color: #eee8d5;
   text-align: center;
+}
+
+#nav {
+  background-color: #268bd2;
+}
+
+#aside {
+  background-color: #cb4b16;
 }
 
 footer p {
@@ -178,7 +203,7 @@ header p {
 
 .searchTerm {
   width: 100%;
-  border: 3px solid #2aa198;
+  border: 3px solid #b58900;
   border-right: none;
   padding: 5px;
   height: 20px;
@@ -194,8 +219,8 @@ header p {
 .searchButton {
   width: 40px;
   height: 36px;
-  border: 1px solid #2aa198;
-  background: #2aa198;
+  border: 1px solid #b58900;
+  background: #b58900;
   text-align: center;
   color: #eee8d5;
   border-radius: 0 5px 5px 0;
