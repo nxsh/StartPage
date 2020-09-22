@@ -1,61 +1,11 @@
-// Load functions on window load
-function start() {
-	dateTime();
-	weather();
-}
-window.onload = start;
+// Global variables
 
+var ip; // store IP
 
-
-$(document).keydown(function(e){
-		if (e.keyCode==78) $("nav").toggleClass("hide")
-	});
-$(document).keydown(function(e){
-	if (e.keyCode==65) $("aside").toggleClass("hide")
-});
 // Month array
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "Oct", "November", "December"];
 
-// Function to give correct 'st', 'nd', 'rd', 'th' for month dates
-function ordinal_suffix_of(i) {
-    var j = i % 10,
-        k = i % 100;
-    if (j == 1 && k != 11) {
-        return i + "st";
-    }
-    if (j == 2 && k != 12) {
-        return i + "nd";
-    }
-    if (j == 3 && k != 13) {
-        return i + "rd";
-    }
-    return i + "th";
-}
-
-// Date
-function dateTime() {
-  var d=new Date();
-    ap="am";
-    //Hours, mins, secs
-    h=d.getHours();
-    m=d.getMinutes();
-    s=d.getSeconds();
-    // Format output wanted
-    if (h>11) { ap = "pm"; }
-    if (h>12) { h = h-12; }
-    if (h==0) { h = 12; }
-    if (m<10) { m = "0" + m; }
-    if (s<10) { s = "0" + s; }
-    //Day, month, year
-    t=d.getDate();
-    t=ordinal_suffix_of(t);
-    n=monthNames[d.getMonth()];
-    y=d.getFullYear();
-    document.getElementById('timest').textContent=h + ":" + m + ap;
-    document.getElementById('datest').textContent=t + " of " + n;
-    t=setTimeout(dateTime, 500);
-}
 // Counter for search
 var count = 0;
 
@@ -111,6 +61,84 @@ var commands = [
 	},
 ];
 
+// Load functions on window load
+function start() {
+	dateTime();
+	weather();
+}
+window.onload = start;
+
+$("#top").on("click", function() {
+	$("nav").toggleClass("hide");
+	$("aside").toggleClass("hide");
+});
+
+// IP/VPN functions
+$.getJSON("https://am.i.mullvad.net/json", function(data){
+	console.log(data);
+	if(data.mullvad_exit_ip) {
+    document.getElementById('vpn').textContent="connected";
+	}
+	else {
+    document.getElementById('vpn').textContent="disconnected";
+	}
+});
+
+// IP location
+$.getJSON("https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=at_87UkRbwACHaX1jMHwhx6OKxUIYNNg&"+ip+"=8.8.8.8", function(data) {
+	console.log(data.location.postalCode);
+	document.getElementById('loc').textContent = data.location.city;
+});
+
+// Show/Hide nav and aside
+$(document).keydown(function(e){
+	if (e.keyCode==78) $("nav").toggleClass("hide")
+});
+
+$(document).keydown(function(e){
+	if (e.keyCode==65) $("aside").toggleClass("hide")
+});
+
+// Function to give correct 'st', 'nd', 'rd', 'th' for month dates
+function ordinal_suffix_of(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
+}
+
+// Date
+function dateTime() {
+  var d=new Date();
+    ap="am";
+    //Hours, mins, secs
+    h=d.getHours();
+    m=d.getMinutes();
+    s=d.getSeconds();
+    // Format output wanted
+    if (h>11) { ap = "pm"; }
+    if (h>12) { h = h-12; }
+    if (h==0) { h = 12; }
+    if (m<10) { m = "0" + m; }
+    if (s<10) { s = "0" + s; }
+    //Day, month, year
+    t=d.getDate();
+    t=ordinal_suffix_of(t);
+    n=monthNames[d.getMonth()];
+    y=d.getFullYear();
+    document.getElementById('timest').textContent=h + ":" + m + ap;
+    document.getElementById('datest').textContent=t + " of " + n;
+    t=setTimeout(dateTime, 500);
+}
+
 // Load first search icon
 window.onload($("#searchEngine").toggleClass(commands[count]["icon"]));
 
@@ -127,6 +155,12 @@ $("#searchEngine").on("click", function() {
   console.log("Search button clicked!");
 });
 
+$("#productivity").on("click", function() {
+	console.log("clicked");
+	$("#prodLinks").toggleClass("hide");
+});
+
+// Search function
 function search(e) {
   if(e.keyCode == 13) { // if enter pressed
 		var val = document.getElementById("search-field").value;
@@ -184,7 +218,5 @@ function weather() {
 			}
 			icons.play();
         }
-     
  );
 }
-

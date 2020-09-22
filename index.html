@@ -12,7 +12,7 @@
 <body>
   
   <header>
-    <p class="textCenter">Hi Ryan,<br> The time is <span id="timest">00:00</span> on the <span id="datest">SOMETHING of SOMETHING</span></p>
+    <p class="textCenter" id="top">Hi Ryan,<br> The time is <span id="timest">00:00</span> on the <span id="datest">SOMETHING of SOMETHING</span></p>
   </header>
     <div id='main'>
       <nav class="hide">
@@ -30,7 +30,7 @@
         <div class="grid textCenter">
           <div class="coll">
             <p class="category" id="productivity">Productivity
-              <div class="links">
+              <div id="prodLinks" class="links">
                 <a href="https://www.notion.so/"><p>Notion</p></a>
                 <a href="https://github.com/nxsh"><p>My GitHub</p></a>
                 <a href="https://www.linkedin.com/feed/"><p>LinkedIn</p></a>
@@ -71,16 +71,40 @@
         </div>
       </div> 
       </article>
-      <aside class="hide">
+      <aside id="as" class="hide textCenter">
         <p class="sectionTitle" id="aside">Aside</p>
-        <div class="textCenter" id="weatherDiv">
+        <div id="weatherDiv">
               <canvas id="icon" width="64" height="64"></canvas>
                 <div id="temp"></div>
                 <div id="minutely"></div>
             </div>
+            <div id="map"></div>
+            <p>VPN: <span id="vpn"></span></p>
+            <p>IP Location: <span id="loc"></span></p>
       </aside>
     </div>
   <footer><p>Ryan Nash &copy 2020</p></footer>
+<script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru, disableDefaultUI:true});
+  // The marker, positioned at Uluru
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgQLPmdMgmfZR3fcJBcn95VcjUu8XRaJ0&callback=initMap">
+    </script>
+
 <script src="script.js"></script>
+
 </body>
 </html>
