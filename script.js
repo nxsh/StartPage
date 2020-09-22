@@ -2,6 +2,10 @@
 
 var ip; // store IP
 
+// Lat and Long
+var lat;
+var lon;
+
 // Month array
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "Oct", "November", "December"];
@@ -76,6 +80,8 @@ $("#top").on("click", function() {
 // IP/VPN functions
 $.getJSON("https://am.i.mullvad.net/json", function(data){
 	console.log(data);
+	lat = data.latitude;
+	lon = data.longitude;
 	if(data.mullvad_exit_ip) {
     document.getElementById('vpn').textContent="connected";
 	}
@@ -89,6 +95,16 @@ $.getJSON("https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=at_87UkRbwACHaX1
 	console.log(data.location.postalCode);
 	document.getElementById('loc').textContent = data.location.city;
 });
+
+// Google maps
+function initMap() {
+  // The location of IP, needs doing dynamically using mullvad json object values
+  var loc = {lat: 52.3128, lng: -1.5033};
+  // The map, centered at loc
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 8, center: loc, disableDefaultUI:true});
+  // The marker, positioned at loc, hidden with disableDefaultUI
+}
 
 // Show/Hide nav and aside
 $(document).keydown(function(e){

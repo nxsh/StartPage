@@ -144,6 +144,10 @@ header p {
   width: 100%;
   height: 150px;
 }
+
+#overMap {
+  z-index: 99;
+}
 /* Too narrow to support three columns */
 
 @media all and (max-width: 640px) {
