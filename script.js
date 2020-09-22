@@ -73,7 +73,7 @@ function start() {
 window.onload = start;
 
 $("#top").on("click", function() {
-	$("nav").toggleClass("hide");
+	//$("nav").toggleClass("hide");
 	$("aside").toggleClass("hide");
 });
 
