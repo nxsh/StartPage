@@ -80,8 +80,6 @@ $("#top").on("click", function() {
 // IP/VPN functions
 $.getJSON("https://am.i.mullvad.net/json", function(data){
 	console.log(data);
-	lat = data.latitude;
-	lon = data.longitude;
 	if(data.mullvad_exit_ip) {
     document.getElementById('vpn').textContent="connected";
 	}
@@ -98,12 +96,18 @@ $.getJSON("https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=at_87UkRbwACHaX1
 
 // Google maps
 function initMap() {
+	$.getJSON("https://am.i.mullvad.net/json", function(data){
+	lat = data.latitude;
+	lon = data.longitude;
   // The location of IP, needs doing dynamically using mullvad json object values
-  var loc = {lat: 52.3128, lng: -1.5033};
+  var loc = {lat: lat, lng: lon};
   // The map, centered at loc
   var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 8, center: loc, disableDefaultUI:true});
-  // The marker, positioned at loc, hidden with disableDefaultUI
+      document.getElementById('map'), {zoom: 9, center: loc, disableDefaultUI:true});
+	// The marker, positioned at loc, hidden with disableDefaultUI
+	var marker = new google.maps.Marker({position: loc, map: map});
+
+})
 }
 
 // Show/Hide nav and aside
