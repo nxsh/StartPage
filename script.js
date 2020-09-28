@@ -1,6 +1,9 @@
 // Global variables
-
 var ip; // store IP
+
+localStorage.getItem('name') ? document.getElementById('fname').textContent=localStorage.getItem('name') : document.getElementById('fname').textContent="no name";
+
+//condition ? exprIfTrue : exprIfFalse
 
 // Lat and Long
 var lat;
@@ -68,12 +71,12 @@ var commands = [
 // Load functions on window load
 function start() {
 	dateTime();
-	weather();
+	// weather() called from initMap() so the user's lat and lon exist
 }
 window.onload = start;
 
 $("#top").on("click", function() {
-	//$("nav").toggleClass("hide");
+	$("nav").toggleClass("hide");
 	$("aside").toggleClass("hide");
 });
 
@@ -96,7 +99,7 @@ $.getJSON("https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=at_87UkRbwACHaX1
 
 // Google maps
 function initMap() {
-	$.getJSON("https://am.i.mullvad.net/json", function(data){
+	$.getJSON("https://am.i.mullvad.net/json", function(data){ // redundant need to merge with other call
 	lat = data.latitude;
 	lon = data.longitude;
   // The location of IP, needs doing dynamically using mullvad json object values
@@ -106,11 +109,18 @@ function initMap() {
       document.getElementById('map'), {zoom: 9, center: loc, disableDefaultUI:true});
 	// The marker, positioned at loc, hidden with disableDefaultUI
 	var marker = new google.maps.Marker({position: loc, map: map});
-
+  weather();
 })
 }
-
+$(document).keydown(function(e) {
+    if ($(e.target).closest("input")[0]) { // if an input is being used do not trigger
+        return;
+    }
+		if (e.keyCode==83) $("nav").toggleClass("hide");
+		if (e.keyCode==65) $("aside").toggleClass("hide")
+});
 // Show/Hide nav and aside
+/*
 $(document).keydown(function(e){
 	if (e.keyCode==78) $("nav").toggleClass("hide")
 });
@@ -118,6 +128,7 @@ $(document).keydown(function(e){
 $(document).keydown(function(e){
 	if (e.keyCode==65) $("aside").toggleClass("hide")
 });
+*/
 
 // Function to give correct 'st', 'nd', 'rd', 'th' for month dates
 function ordinal_suffix_of(i) {
@@ -188,13 +199,20 @@ function search(e) {
 	}
 }
 
+function updateName(e) {
+	if(e.keyCode == 13) {
+		localStorage.setItem('name', document.getElementById("name-field").value); // need to set up an input to use this
+		document.getElementById('fname').textContent=localStorage.getItem('name');
+	}
+}
+
 // Weather
 function weather() {
   var apiKey = "c632ff1ea87a9720027890a394abe1e4";
   var url = "https://api.forecast.io/forecast/";
 
-  latitude = "52.626881";
-  longitude = "-1.115510";
+  latitude = lat;
+  longitude = lon;
   //location.innerHTML = "Latitude is " + latitude + ", Longitude is " + longitude;
 
     $.getJSON(

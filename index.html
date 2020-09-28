@@ -12,11 +12,13 @@
 <body>
   
   <header>
-    <p class="textCenter" id="top">Hi Ryan,<br> The time is <span id="timest">00:00</span> on the <span id="datest">SOMETHING of SOMETHING</span></p>
+    <p class="textCenter" id="top">Hi <span id="fname"></span>,<br> The time is <span id="timest">00:00</span> on the <span id="datest">SOMETHING of SOMETHING</span></p>
   </header>
     <div id='main'>
       <nav class="hide">
         <p class="sectionTitle" id="nav">Settings</p>
+          <label for="fname"></label>Name:</label>
+          <input type="text" id="name-field" placeholder="fname" onkeypress="return updateName(event)">
       </nav>
       <article>
         <div id="nfull">
