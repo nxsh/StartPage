@@ -7,6 +7,8 @@ Start page for web browsers with functions like weather and frequent links
 * Isolate keypresses on page from those when in an input DONE
 * Order flex settings (nav) to be last on mobile DONE
 
+* Searching for an ID in a JSON object without an explicit loop
+* HARD - match IP location with a location in the Corona data JSON object to pull cases
 * Vertical center for page
 * Store search engine selection as a cookie/local storage
 * Light mode theme toggle using cookies/local storage

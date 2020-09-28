@@ -212,6 +212,18 @@ header p {
 }
 
 /* Search styling */
+
+.nameTerm {
+  border: 3px solid #b58900;
+  padding: 5px;
+  margin-bottom: 15px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #839496;
+  background-color : #eee8d5; 
+}
+
 .search input[type="text"] {
   background-color : #eee8d5; 
 }
@@ -231,16 +243,6 @@ header p {
   padding: 5px;
   height: 20px;
   border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #839496;
-}
-
-.nameTerm {
-  border: 3px solid #b58900;
-  padding: 5px;
-  margin-bottom: 15px;
-  height: 20px;
-  border-radius: 5px;
   outline: none;
   color: #839496;
 }
