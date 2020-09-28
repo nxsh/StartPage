@@ -103,18 +103,20 @@ $.getJSON("https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=at_87UkRbwACHaX1
 // Google maps
 function initMap() {
 	$.getJSON("https://am.i.mullvad.net/json", function(data){ // redundant need to merge with other call
-	lat = data.latitude;
-	lon = data.longitude;
-  // The location of IP, needs doing dynamically using mullvad json object values
-  var loc = {lat: lat, lng: lon};
-  // The map, centered at loc
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 9, center: loc, disableDefaultUI:true});
-	// The marker, positioned at loc, hidden with disableDefaultUI
-	var marker = new google.maps.Marker({position: loc, map: map});
-  weather();
-})
-}
+		lat = data.latitude;
+		lon = data.longitude;
+  	// The location of IP, needs doing dynamically using mullvad json object values
+  	var loc = {lat: lat, lng: lon};
+  	// The map, centered at loc
+  	var map = new google.maps.Map(
+      	document.getElementById('map'), {zoom: 9, center: loc, disableDefaultUI:true});
+		// The marker, positioned at loc, hidden with disableDefaultUI
+		var marker = new google.maps.Marker({position: loc, map: map});
+  	weather();
+	})
+};
+
+// Show settings and aside by pressing 's' and 'a'
 $(document).keydown(function(e) {
     if ($(e.target).closest("input")[0]) { // if an input is being used do not trigger
         return;
@@ -122,16 +124,6 @@ $(document).keydown(function(e) {
 		if (e.keyCode==83) $("nav").toggleClass("hide");
 		if (e.keyCode==65) $("aside").toggleClass("hide")
 });
-// Show/Hide nav and aside
-/*
-$(document).keydown(function(e){
-	if (e.keyCode==78) $("nav").toggleClass("hide")
-});
-
-$(document).keydown(function(e){
-	if (e.keyCode==65) $("aside").toggleClass("hide")
-});
-*/
 
 // Function to give correct 'st', 'nd', 'rd', 'th' for month dates
 function ordinal_suffix_of(i) {
@@ -199,7 +191,7 @@ $(".coll").on("click", function() {
   var $window = $(window),
     $link = $('.links');
   function resize() {
-    if ($window.width() < 514) {
+    if ($window.width() < 641) {
       return $link.addClass('hide');
     }
 
