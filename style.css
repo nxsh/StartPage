@@ -146,6 +146,11 @@ header p {
   border-radius: 7pt;
 }
 
+/* CoronaCount */
+#cc {
+  font-size: smaller ;
+}
+
 /* Too narrow to support three columns */
 
 @media all and (max-width: 640px) {

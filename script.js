@@ -100,6 +100,19 @@ $.getJSON("https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=at_87UkRbwACHaX1
 	document.getElementById('loc').textContent = data.location.city;
 });
 
+var corona;
+$.getJSON("https://c19downloads.azureedge.net/downloads/msoa_data/MSOAs_latest.json", function(data) {
+	//console.log(data.data[1908].lad19_nm); // Coventry, Walsgrave
+	corona = data.data[1908].latest_7_days;
+	document.getElementById('cc').textContent=corona+" coronavirus cases in Walsgrave in the last 7 days";
+	//JSON.parse(data).data.find(element => element.msoa11_cd === 'E02006525'));
+});
+
+console.log(corona + " cases in Walsgrave, Coventry in the last 7 days");
+
+//JSON.parse(corona).corona.find(element => element.msoa11_cd === 'E02006525');
+
+
 // Google maps
 function initMap() {
 	$.getJSON("https://am.i.mullvad.net/json", function(data){ // redundant need to merge with other call
