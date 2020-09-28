@@ -189,10 +189,26 @@ $("#searchEngine").on("click", function() {
   console.log("Search button clicked!");
 });
 
-$("#productivity").on("click", function() {
-	console.log("clicked");
-	$("#prodLinks").toggleClass("hide");
+// Show/hide category links
+$(".coll").on("click", function() {
+	$(this).find(".links").toggleClass("hide");
 });
+
+// Hide links on mobile
+(function($) {
+  var $window = $(window),
+    $link = $('.links');
+  function resize() {
+    if ($window.width() < 514) {
+      return $link.addClass('hide');
+    }
+
+    $link.removeClass('hide');
+  }
+  $window
+    .resize(resize)
+    .trigger('resize');
+})(jQuery);
 
 // Search function
 function search(e) {
@@ -206,6 +222,7 @@ function updateName(e) {
 	if(e.keyCode == 13) {
 		localStorage.setItem('name', document.getElementById("name-field").value); // need to set up an input to use this
 		document.getElementById('name-field').value="";
+		document.activeElement.blur(); // unfocus input after update
 		document.getElementById('fname').textContent=localStorage.getItem('name');
 	}
 }

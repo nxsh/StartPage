@@ -100,7 +100,7 @@ header, footer {
  text-align: center;
 }
 
-/* Styling nav and aside */
+/* Styling nav, aside, and footer */
 .sectionTitle {
   margin-top: 0;
   color: #eee8d5;
@@ -130,7 +130,6 @@ header p {
   margin-left: auto;
   margin-right: auto;
 }
-
 
 .textCenter {
   text-align: center;
@@ -234,6 +233,7 @@ header p {
 .nameTerm {
   border: 3px solid #b58900;
   padding: 5px;
+  margin-bottom: 15px;
   height: 20px;
   border-radius: 5px;
   outline: none;
