@@ -144,12 +144,9 @@ header p {
   width: 100%;
   height: 150px;
   border: 1px solid #073642;
- border-radius: 7pt;
+  border-radius: 7pt;
 }
 
-#overMap {
-  z-index: 99;
-}
 /* Too narrow to support three columns */
 
 @media all and (max-width: 640px) {
@@ -164,6 +161,18 @@ header p {
     /* Return them to document order */
     -webkit-order: 0;
             order: 0;
+  }
+
+  /* Override aside so that on mobile it comes directly after time and date */
+  #main > aside {
+    -webkit-order: -1;
+            order: -1;
+  }
+
+  /* Override nav order so it is last on mobile view */
+  #main > nav {
+    -webkit-order: 1;
+            order: 1;
   }
   
   #main > nav, #main > aside, footer {
@@ -218,6 +227,15 @@ header p {
   padding: 5px;
   height: 20px;
   border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #839496;
+}
+
+.nameTerm {
+  border: 3px solid #b58900;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
   outline: none;
   color: #839496;
 }

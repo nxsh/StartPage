@@ -1,7 +1,7 @@
 // Global variables
 var ip; // store IP
 
-localStorage.getItem('name') ? document.getElementById('fname').textContent=localStorage.getItem('name') : document.getElementById('fname').textContent="no name";
+localStorage.getItem('name') ? document.getElementById('fname').textContent=localStorage.getItem('name') : document.getElementById('fname').textContent="'name'";
 
 //condition ? exprIfTrue : exprIfFalse
 
@@ -76,8 +76,11 @@ function start() {
 window.onload = start;
 
 $("#top").on("click", function() {
-	$("nav").toggleClass("hide");
 	$("aside").toggleClass("hide");
+});
+
+$("footer").on("click", function() {
+	$("nav").toggleClass("hide");
 });
 
 // IP/VPN functions
@@ -202,6 +205,7 @@ function search(e) {
 function updateName(e) {
 	if(e.keyCode == 13) {
 		localStorage.setItem('name', document.getElementById("name-field").value); // need to set up an input to use this
+		document.getElementById('name-field').value="";
 		document.getElementById('fname').textContent=localStorage.getItem('name');
 	}
 }
