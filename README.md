@@ -7,6 +7,7 @@ Start page for web browsers with functions like weather and frequent links
 * Isolate keypresses on page from those when in an input DONE
 * Order flex settings (nav) to be last on mobile DONE
 
+* When settings and aside are both open they cause page to extend past viewport, needs fix
 * Searching for an ID in a JSON object without an explicit loop
 * HARD - match IP location with a location in the Corona data JSON object to pull cases
 * Vertical center for page

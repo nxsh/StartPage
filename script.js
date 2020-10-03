@@ -66,7 +66,15 @@ var commands = [
 		icon: "fa fa-youtube-play",
 		url: "https://www.youtube.com/results?search_query="
 	},
+	{
+		command: "/s",
+		label: "SciHub",
+		icon: "fa fa-key",
+		url: "https://scihub.to/"
+	}
 ];
+
+
 
 // Load functions on window load
 function start() {
@@ -187,7 +195,7 @@ $("#searchEngine").on("click", function() {
 	
 	$("#searchEngine").removeClass(commands[count]["icon"])
 	count++;
-	if(count == 8) { // reset counter (loop)
+	if(count == commands.length) { // reset counter (loop)
 		count = 0;
 	}
 	$("#searchEngine").addClass(commands[count]["icon"])
@@ -215,11 +223,19 @@ $(".coll").on("click", function() {
     .trigger('resize');
 })(jQuery);
 
+
+
 // Search function
 function search(e) {
   if(e.keyCode == 13) { // if enter pressed
 		var val = document.getElementById("search-field").value;
+		if(commands[count]["command"] === "/s") {
+			val = val.replace(/^\D*/,'');
+
+		}
 		location.href = (commands[count]["url"]+val);
+		document.getElementById('search-field').value="";
+		//"AA1 2BB".split(/[0-9]/)[0];
 	}
 }
 
