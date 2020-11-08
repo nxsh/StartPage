@@ -74,8 +74,6 @@ var commands = [
 	}
 ];
 
-
-
 // Load functions on window load
 function start() {
 	dateTime();
@@ -116,10 +114,6 @@ $.getJSON("https://c19downloads.azureedge.net/downloads/msoa_data/MSOAs_latest.j
 	document.getElementById('cc').textContent=corona.latest_7_days+" coronavirus cases in Walsgrave in the last 7 days";
 	//JSON.parse(data).data.find(element => element.msoa11_cd === 'E02006525'));
 });
-
-
-//JSON.parse(corona).corona.find(element => element.msoa11_cd === 'E02006525');
-
 
 // Google maps
 function initMap() {
@@ -223,15 +217,12 @@ $(".coll").on("click", function() {
     .trigger('resize');
 })(jQuery);
 
-
-
 // Search function
 function search(e) {
   if(e.keyCode == 13) { // if enter pressed
 		var val = document.getElementById("search-field").value;
 		if(commands[count]["command"] === "/s") {
-			val = val.replace(/^\D*/,'');
-
+			val = val.replace(/^\D*/,''); // only works to truncate DOI links, will break normal strings
 		}
 		location.href = (commands[count]["url"]+val);
 		document.getElementById('search-field').value="";
